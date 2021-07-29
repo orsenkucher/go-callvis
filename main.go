@@ -142,6 +142,11 @@ func main() {
 	}
 
 	http.HandleFunc("/", handler)
+	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
+		log.Println("health checked")
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte("OK"))
+	})
 
 	if *outputFile == "" {
 		*outputFile = "output"
