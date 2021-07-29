@@ -131,17 +131,17 @@ func main() {
 		os.Exit(2)
 	}
 
-	args     := flag.Args()
-	tests    := *testFlag
+	args := flag.Args()
+	tests := *testFlag
 	httpAddr := *httpFlag
-	urlAddr  := parseHTTPAddr(httpAddr)
+	urlAddr := parseHTTPAddr(httpAddr)
 
 	Analysis = new(analysis)
 	if err := Analysis.DoAnalysis("", tests, args); err != nil {
 		log.Fatal(err)
 	}
 
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/vis", handler)
 	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
 		log.Println("health checked")
 		w.WriteHeader(http.StatusOK)
