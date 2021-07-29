@@ -50,7 +50,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	log.Printf("converting dot to %s..\n", *outputFormat)
 
-	img, err = dotToImage("vis", *outputFormat, output)
+	img, err = dotToImage("", *outputFormat, output)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -63,5 +63,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	log.Println("serving file:", img)
+	log.Println("r.URL.Path", r.URL.Path)
 	http.ServeFile(w, r, img)
 }
