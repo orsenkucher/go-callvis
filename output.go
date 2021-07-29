@@ -288,7 +288,7 @@ func printOutput(
 							"label":     fmt.Sprintf("%s", label),
 							"style":     "filled",
 							"fillcolor": "lightyellow",
-							"URL":       fmt.Sprintf("/?f=%s", key),
+							"URL":       fmt.Sprintf("/vis/?f=%s", key),
 							"fontname":  "Tahoma bold",
 							"tooltip":   fmt.Sprintf("package: %s", key),
 							"rank":      "sink",
